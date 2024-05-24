@@ -8,6 +8,8 @@ const CANVAS_DIMENSIONS = { height: canvas.height, width: canvas.width };
 
 const ctx = canvas.getContext("2d");
 
+//function for generating the number line in the middle
+
 function drawLine(){
     ctx.beginPath();
 ctx.moveTo(0, CANVAS_DIMENSIONS.height/2);
@@ -26,7 +28,7 @@ const sequence = [0, 1, 3, 6, 2, 7, 13, 20, 12, 21, 11, 22, 10, 23, 9, 24, 8, 25
     .map(item => item * scale)
 
 
-
+// drawArc() is the function which creates 'semi-circles' based on the number given as the argument, default argument is given as the length of the 'sequence' array to generate all the arcs upon load
 function drawArc(n=sequence.length-1){
     let currentPoint=5;
     let radius=5;
@@ -63,12 +65,12 @@ function drawArc(n=sequence.length-1){
     }
  }
 }
-drawLine();
-drawArc();
+drawLine();// generating the number line
+drawArc();//generating all arcs upto 65 upon load
 
 
 const onInputChangeHandler = (value) => {
-    
+    // here depending upon the value, the number of arcs are dynamically generated
     rangeValueDiv.innerText = value;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawLine();
